@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo detail view</title>
+</head>
+
+<body>
+    <h1>Detail view</h1>
+    <h2>{{ object.taskName }}</h2>
+    <p>Задача создана: {{ object.taskCreatedTime|date:"d.m.Y H:i" }}</p>
+    <p>Завершена ли задача: {{ object.taskCompleted }}</p>
+    <p>Когда завершена задача: {{ object.taskCompleteTime|date:"d.m.Y H:i" }}</p>
+    <p>Сейчас: {{ now|date:"d.m.Y H:i" }}</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo list</title>
+</head>
+
+<body>
+    <div>
+        <h2>Todo list view</h2>
+        <ul>
+            {% for task_ in object_list %}
+                <li>  {{ task_.taskName }} 
+                    {% if task_.taskCompleted %}
+                        <font color='green'> Задача завершена {{ task_.taskCompleteTime|date:"d.m.Y H:i" }}</font>
+                    {% endif %}
+                    </li>
+            {% empty %}
+                <li>No tasks yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
