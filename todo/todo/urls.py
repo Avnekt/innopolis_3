@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from todolist.views import current_datetime
 from todolist.views import MyModelListView, MyModelUpdateView, MyModelCreateView, MyModelDeleteView, MyModelDetailView
+from rest_framework.schemas import get_schema_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,4 +27,11 @@ urlpatterns = [
     path("todocreate/", MyModelCreateView.as_view()),
     path("tododelete/<int:pk>", MyModelDeleteView.as_view()),
     path('tododetail/<int:pk>', MyModelDetailView.as_view()),
+    path("api/", include("todolist.urls")),
+
+    path('openapi/', get_schema_view(
+        title="Studying",
+        description="API for all things …",
+        version="1.0.0"
+    ), name='openapi-schema'),
 ]
